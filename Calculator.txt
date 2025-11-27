@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Age Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-gradient: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --text-muted: #6b7280;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--text-color);
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        h1 span {
+            color: var(--primary-color);
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--text-color);
+            outline: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background-color: #f9fafb;
+        }
+
+        input[type="date"]:focus {
+            border-color: var(--primary-color);
+            background-color: #fff;
+        }
+
+        /* Webkit calendar icon customization */
+        ::-webkit-calendar-picker-indicator {
+            background-color: #e0e7ff;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+            color: var(--primary-color);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+        }
+
+        button:hover {
+            background: var(--primary-hover);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .result-box {
+            margin-top: 30px;
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-item {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .label {
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        .error {
+            color: #ef4444;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        /* Footer/Copyright */
+        .footer {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #9ca3af;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Age <span>Calculator</span></h1>
+        
+        <div class="input-group">
+            <label for="birthdate">Select your Date of Birth</label>
+            <input type="date" id="birthdate">
+            <div id="error-msg" class="error">Please select a valid date in the past.</div>
+        </div>
+
+        <button onclick="calculateAge()">Calculate Age</button>
+
+        <div class="result-box" id="result">
+            <div class="result-item">
+                <span class="number" id="years">0</span>
+                <span class="label">Years</span>
+            </div>
+            <div class="result-item">
+                <span class="number" id="months">0</span>
+                <span class="label">Months</span>
+            </div>
+            <div class="result-item">
+                <span class="number" id="days">0</span>
+                <span class="label">Days</span>
+            </div>
+        </div>
+        
+        <div class="footer">Simple, Fast, & Accurate</div>
+    </div>
+
+    <script>
+        // Set max date to today to prevent future dates in picker
+        const dateInput = document.getElementById('birthdate');
+        dateInput.max = new Date().toISOString().split("T")[0];
+
+        function calculateAge() {
+            const birthInput = document.getElementById('birthdate').value;
+            const errorMsg = document.getElementById('error-msg');
+            const resultBox = document.getElementById('result');
+
+            // Validation
+            if (!birthInput) {
+                errorMsg.style.display = 'block';
+                errorMsg.innerText = "Please enter your birth date.";
+                resultBox.style.display = 'none';
+                return;
+            }
+
+            const birthDate = new Date(birthInput);
+            const today = new Date();
+
+            // Check if future date (double check)
+            if (birthDate > today) {
+                errorMsg.style.display = 'block';
+                errorMsg.innerText = "Date cannot be in the future.";
+                resultBox.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+
+            let y1 = birthDate.getFullYear();
+            let m1 = birthDate.getMonth() + 1;
+            let d1 = birthDate.getDate();
+
+            let y2 = today.getFullYear();
+            let m2 = today.getMonth() + 1;
+            let d2 = today.getDate();
+
+            let d3, m3, y3;
+
+            y3 = y2 - y1;
+
+            if (m2 >= m1) {
+                m3 = m2 - m1;
+            } else {
+                y3--;
+                m3 = 12 + m2 - m1;
+            }
+
+            if (d2 >= d1) {
+                d3 = d2 - d1;
+            } else {
+                m3--;
+                if (m3 < 0) {
+                    m3 = 11;
+                    y3--;
+                }
+                d3 = getDaysInMonth(y1, m1) + d2 - d1;
+            }
+
+            // Update UI
+            document.getElementById('years').innerText = y3;
+            document.getElementById('months').innerText = m3;
+            document.getElementById('days').innerText = d3;
+            
+            resultBox.style.display = 'block';
+        }
+
+        function getDaysInMonth(year, month) {
+            return new Date(year, month, 0).getDate();
+        }
+    </script>
+</body>
+</html>
