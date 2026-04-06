@@ -1,0 +1,45 @@
+{
+  "name": "propakist-age-calculator",
+  "version": "1.0.0",
+  "description": "Professional Age Calculator with inspirational quotes, accurate calculations, and gender-inclusive messages",
+  "main": "index.html",
+  "scripts": {
+    "start": "open index.html"
+  },
+  "keywords": [
+    "age-calculator",
+    "birthday",
+    "age",
+    "calculator",
+    "web-app",
+    "javascript",
+    "html5",
+    "css3",
+    "professional",
+    "responsive",
+    "quotes",
+    "inspirational",
+    "gender-inclusive"
+  ],
+  "author": "propakist",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/propakist/Age-Calculator.git"
+  },
+  "homepage": "https://propakist.github.io/Age-Calculator",
+  "bugs": {
+    "url": "https://github.com/propakist/Age-Calculator/issues"
+  },
+  "keywords": [
+    "age",
+    "calculator",
+    "birthday",
+    "zodiac",
+    "inspirational",
+    "quotes",
+    "gender-inclusive",
+    "professional",
+    "web-app"
+  ]
+}
