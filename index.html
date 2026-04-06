@@ -1,31 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z4B5P68L4H"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Z4B5P68L4H');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Age Calculator Pro - Know Your Story</title>
-    <meta name="description" content="Calculate your exact age, zodiac sign, and life milestones. A professional tool by Muhammad Amir (UAF).">
-    <meta name="keywords" content="Age Calculator, Zodiac Finder, UAF, Pakistan, Life Statistics">
-    <meta property="og:title" content="Age Calculator Pro - Know Your Story">
-    <meta property="og:description" content="How many days have you been alive? Check your exact age and zodiac sign now!">
-    <meta property="og:url" content="https://propakist.github.io/Age-Calculator/">
-    <meta property="og:type" content="website">
-
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">
@@ -36,6 +21,7 @@
         </div>
     </nav>
 
+    <!-- Celebration Modal -->
     <div class="modal-overlay" id="celebrationModal">
         <div class="modal-card">
             <button class="modal-close" onclick="closeCelebration()">&times;</button>
@@ -49,6 +35,7 @@
                     <div class="age-label-display">Years</div>
                 </div>
 
+                <!-- Personalization -->
                 <div class="gender-selector">
                     <p class="selector-title">Choose your pronouns:</p>
                     <div class="gender-options">
@@ -64,6 +51,7 @@
                     </div>
                 </div>
 
+                <!-- Quote Section -->
                 <div class="quote-section">
                     <div class="quote-text" id="quoteText">
                         "Life is a beautiful journey. Every moment counts."
@@ -74,6 +62,7 @@
                     </button>
                 </div>
 
+                <!-- Stats Grid -->
                 <div class="stats-celebration">
                     <div class="stat-item">
                         <span class="stat-emoji">⏰</span>
@@ -97,6 +86,7 @@
                     </div>
                 </div>
 
+                <!-- Action Buttons -->
                 <div class="modal-buttons">
                     <button class="btn-primary" onclick="closeCelebration()">
                         Close
@@ -109,7 +99,9 @@
         </div>
     </div>
 
+    <!-- Main Container -->
     <div class="container">
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <h1 class="hero-title">Discover Your Age Story</h1>
@@ -123,7 +115,9 @@
             </div>
         </section>
 
+        <!-- Main Content -->
         <div class="content-wrapper">
+            <!-- Input Section -->
             <div class="card">
                 <div class="card-header">
                     <h2>📅 Enter Your Birth Date</h2>
@@ -140,11 +134,13 @@
                     <p class="input-hint">✓ Your data stays private • No tracking</p>
                 </div>
 
+                <!-- Error Message -->
                 <div class="error-box" id="errorBox" style="display: none;">
                     <span class="error-icon">⚠️</span>
                     <span class="error-text" id="errorText"></span>
                 </div>
 
+                <!-- Success Message -->
                 <div class="success-box" id="successBox" style="display: none;">
                     <span class="success-icon">✓</span>
                     <span class="success-text" id="successText"></span>
@@ -156,12 +152,14 @@
                 </button>
             </div>
 
+            <!-- Results Section -->
             <div class="card card-results" id="resultsCard" style="display: none;">
                 <div class="card-header">
                     <h2>🎂 Your Age Breakdown</h2>
                     <p>Here's your complete age profile</p>
                 </div>
 
+                <!-- Main Age Display -->
                 <div class="age-main">
                     <div class="age-unit-box">
                         <span class="age-num" id="yearsDisplay">0</span>
@@ -179,6 +177,7 @@
                     </div>
                 </div>
 
+                <!-- Statistics Cards -->
                 <div class="stats-grid">
                     <div class="stat-card stat-card-1">
                         <div class="stat-card-icon">📊</div>
@@ -210,6 +209,7 @@
                     </div>
                 </div>
 
+                <!-- Details Section -->
                 <div class="details-box">
                     <h3 class="details-title">Additional Information</h3>
                     <div class="detail-item">
@@ -220,6 +220,10 @@
                     <div class="detail-item">
                         <span class="detail-icon">♈</span>
                         <span class="detail-label">Zodiac Sign:</span>
+                        <span class="detail-value" id="zodiacDisplay">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🎂</span>
                         <span class="detail-label">Next Milestone:</span>
                         <span class="detail-value" id="milestoneDisplay">-</span>
                     </div>
@@ -230,6 +234,7 @@
                     </div>
                 </div>
 
+                <!-- Action Buttons -->
                 <div class="action-buttons">
                     <button class="btn-celebrate" onclick="showCelebration()">
                         🎊 See Celebration Message
@@ -240,6 +245,7 @@
                 </div>
             </div>
 
+            <!-- Features Section -->
             <section class="features">
                 <h2 class="features-title">Why Choose Age Calculator Pro?</h2>
                 <div class="features-grid">
@@ -278,6 +284,7 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 Age Calculator Pro • Made with ❤️ • <a href="#">Privacy</a> • <a href="#">Contact</a></p>
     </footer>
