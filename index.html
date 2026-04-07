@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <meta name="monetag" content="0aeb614fc6ed4a18ff0344eb770f9e90">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="monetag" content="0aeb614fc6ed4a18ff0344eb770f9e90">
     <title>Age Calculator Pro - Know Your Story</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">
@@ -21,7 +22,6 @@
         </div>
     </nav>
 
-    <!-- Celebration Modal -->
     <div class="modal-overlay" id="celebrationModal">
         <div class="modal-card">
             <button class="modal-close" onclick="closeCelebration()">&times;</button>
@@ -35,7 +35,6 @@
                     <div class="age-label-display">Years</div>
                 </div>
 
-                <!-- Personalization -->
                 <div class="gender-selector">
                     <p class="selector-title">Choose your pronouns:</p>
                     <div class="gender-options">
@@ -51,7 +50,6 @@
                     </div>
                 </div>
 
-                <!-- Quote Section -->
                 <div class="quote-section">
                     <div class="quote-text" id="quoteText">
                         "Life is a beautiful journey. Every moment counts."
@@ -62,7 +60,6 @@
                     </button>
                 </div>
 
-                <!-- Stats Grid -->
                 <div class="stats-celebration">
                     <div class="stat-item">
                         <span class="stat-emoji">⏰</span>
@@ -86,7 +83,6 @@
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
                 <div class="modal-buttons">
                     <button class="btn-primary" onclick="closeCelebration()">
                         Close
@@ -99,9 +95,7 @@
         </div>
     </div>
 
-    <!-- Main Container -->
     <div class="container">
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
                 <h1 class="hero-title">Discover Your Age Story</h1>
@@ -115,9 +109,7 @@
             </div>
         </section>
 
-        <!-- Main Content -->
         <div class="content-wrapper">
-            <!-- Input Section -->
             <div class="card">
                 <div class="card-header">
                     <h2>📅 Enter Your Birth Date</h2>
@@ -134,13 +126,11 @@
                     <p class="input-hint">✓ Your data stays private • No tracking</p>
                 </div>
 
-                <!-- Error Message -->
                 <div class="error-box" id="errorBox" style="display: none;">
                     <span class="error-icon">⚠️</span>
                     <span class="error-text" id="errorText"></span>
                 </div>
 
-                <!-- Success Message -->
                 <div class="success-box" id="successBox" style="display: none;">
                     <span class="success-icon">✓</span>
                     <span class="success-text" id="successText"></span>
@@ -152,14 +142,12 @@
                 </button>
             </div>
 
-            <!-- Results Section -->
             <div class="card card-results" id="resultsCard" style="display: none;">
                 <div class="card-header">
                     <h2>🎂 Your Age Breakdown</h2>
                     <p>Here's your complete age profile</p>
                 </div>
 
-                <!-- Main Age Display -->
                 <div class="age-main">
                     <div class="age-unit-box">
                         <span class="age-num" id="yearsDisplay">0</span>
@@ -177,7 +165,6 @@
                     </div>
                 </div>
 
-                <!-- Statistics Cards -->
                 <div class="stats-grid">
                     <div class="stat-card stat-card-1">
                         <div class="stat-card-icon">📊</div>
@@ -209,7 +196,6 @@
                     </div>
                 </div>
 
-                <!-- Details Section -->
                 <div class="details-box">
                     <h3 class="details-title">Additional Information</h3>
                     <div class="detail-item">
@@ -234,7 +220,6 @@
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
                 <div class="action-buttons">
                     <button class="btn-celebrate" onclick="showCelebration()">
                         🎊 See Celebration Message
@@ -245,7 +230,6 @@
                 </div>
             </div>
 
-            <!-- Features Section -->
             <section class="features">
                 <h2 class="features-title">Why Choose Age Calculator Pro?</h2>
                 <div class="features-grid">
@@ -284,7 +268,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2026 Age Calculator Pro • Made with ❤️ • <a href="#">Privacy</a> • <a href="#">Contact</a></p>
     </footer>
